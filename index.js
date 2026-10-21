@@ -1,4 +1,3 @@
-
 import jsonfile from "jsonfile";
 import moment from "moment";
 import { simpleGit } from "simple-git";
@@ -9,13 +8,13 @@ const git = simpleGit();
 
 const makeCommits = async (n) => {
   try {
-    // Make sure this folder is already a Git repository.
     for (let i = 0; i < n; i++) {
-      const date = moment()
-        .subtract(1, "year")
-        .add(1, "day")
-        .add(random.int(0, 54), "weeks")
-        .add(random.int(0, 6), "days")
+      // Random date between Jan 1 and Dec 31, 2025
+      const date = moment("2025-01-01")
+        .add(random.int(0, 364), "days")
+        .hour(random.int(8, 20))
+        .minute(random.int(0, 59))
+        .second(random.int(0, 59))
         .format();
 
       await jsonfile.writeFile(path, { date });
@@ -26,10 +25,10 @@ const makeCommits = async (n) => {
         "--date": date,
       });
 
-      console.log(`Commit ${i + 1}/${n} created`);
+      console.log(`Commit ${i + 1}/${n}: ${date}`);
     }
 
-    console.log("All commits created.");
+    console.log("All commits created within 2025!");
   } catch (error) {
     console.error("Git error:", error.message);
   }
