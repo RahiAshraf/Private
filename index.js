@@ -9,7 +9,7 @@ const git = simpleGit();
 const makeCommits = async (n) => {
   try {
     for (let i = 0; i < n; i++) {
-      // Random date between Jan 1 and Dec 31, 2025
+      
       const date = moment("2025-01-01")
         .add(random.int(0, 364), "days")
         .hour(random.int(8, 20))
