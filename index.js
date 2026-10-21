@@ -35,4 +35,4 @@ const makeCommits = async (n) => {
   }
 };
 
-makeCommits(20);
+makeCommits(50);
